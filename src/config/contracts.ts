@@ -1,0 +1,335 @@
+export const BOTRENT_CONTRACT_ADDRESS = (process.env
+  .NEXT_PUBLIC_BOTRENT_CONTRACT_ADDRESS ||
+  "0x71fa5827144aAd0Af7B3C85873c4BF7741fCc10A") as `0x${string}`;
+
+export const MOCK_NFT_CONTRACT_ADDRESS = (process.env
+  .NEXT_PUBLIC_MOCK_NFT_CONTRACT_ADDRESS ||
+  "0xCCcbB597A4dD701E77F9427cf2a0907EDD35A640") as `0x${string}`;
+
+export const BOTRENT_ABI = [
+  {
+    type: "function",
+    name: "createListing",
+    stateMutability: "nonpayable",
+    inputs: [
+      { name: "nftContract", type: "address" },
+      { name: "tokenId", type: "uint256" },
+      { name: "price", type: "uint256" },
+      { name: "duration", type: "uint256" },
+    ],
+    outputs: [{ name: "", type: "uint256" }],
+  },
+  {
+    type: "function",
+    name: "cancelListing",
+    stateMutability: "nonpayable",
+    inputs: [{ name: "listingId", type: "uint256" }],
+    outputs: [],
+  },
+  {
+    type: "function",
+    name: "rent",
+    stateMutability: "payable",
+    inputs: [{ name: "listingId", type: "uint256" }],
+    outputs: [{ name: "", type: "uint256" }],
+  },
+  {
+    type: "function",
+    name: "extendRental",
+    stateMutability: "payable",
+    inputs: [{ name: "rentalId", type: "uint256" }],
+    outputs: [],
+  },
+  {
+    type: "function",
+    name: "endRental",
+    stateMutability: "nonpayable",
+    inputs: [{ name: "rentalId", type: "uint256" }],
+    outputs: [],
+  },
+  {
+    type: "function",
+    name: "withdrawEarnings",
+    stateMutability: "nonpayable",
+    inputs: [],
+    outputs: [],
+  },
+  {
+    type: "function",
+    name: "isRentalExpired",
+    stateMutability: "view",
+    inputs: [{ name: "rentalId", type: "uint256" }],
+    outputs: [{ name: "", type: "bool" }],
+  },
+  {
+    type: "function",
+    name: "getListing",
+    stateMutability: "view",
+    inputs: [{ name: "listingId", type: "uint256" }],
+    outputs: [
+      {
+        type: "tuple",
+        name: "",
+        components: [
+          { name: "listingId", type: "uint256" },
+          { name: "owner", type: "address" },
+          { name: "nftContract", type: "address" },
+          { name: "tokenId", type: "uint256" },
+          { name: "price", type: "uint256" },
+          { name: "duration", type: "uint256" },
+          { name: "active", type: "bool" },
+          { name: "createdAt", type: "uint256" },
+        ],
+      },
+    ],
+  },
+  {
+    type: "function",
+    name: "getRental",
+    stateMutability: "view",
+    inputs: [{ name: "rentalId", type: "uint256" }],
+    outputs: [
+      {
+        type: "tuple",
+        name: "",
+        components: [
+          { name: "rentalId", type: "uint256" },
+          { name: "listingId", type: "uint256" },
+          { name: "renter", type: "address" },
+          { name: "owner", type: "address" },
+          { name: "nftContract", type: "address" },
+          { name: "tokenId", type: "uint256" },
+          { name: "amount", type: "uint256" },
+          { name: "startedAt", type: "uint256" },
+          { name: "expiresAt", type: "uint256" },
+          { name: "active", type: "bool" },
+        ],
+      },
+    ],
+  },
+  {
+    type: "function",
+    name: "getListingCount",
+    stateMutability: "view",
+    inputs: [],
+    outputs: [{ name: "", type: "uint256" }],
+  },
+  {
+    type: "function",
+    name: "getRentalCount",
+    stateMutability: "view",
+    inputs: [],
+    outputs: [{ name: "", type: "uint256" }],
+  },
+  {
+    type: "function",
+    name: "getOwnerEarnings",
+    stateMutability: "view",
+    inputs: [{ name: "owner", type: "address" }],
+    outputs: [{ name: "", type: "uint256" }],
+  },
+  {
+    type: "function",
+    name: "getOwnerListings",
+    stateMutability: "view",
+    inputs: [{ name: "owner", type: "address" }],
+    outputs: [{ name: "", type: "uint256[]" }],
+  },
+  {
+    type: "function",
+    name: "getRenterRentals",
+    stateMutability: "view",
+    inputs: [{ name: "renter", type: "address" }],
+    outputs: [{ name: "", type: "uint256[]" }],
+  },
+  {
+    type: "function",
+    name: "getAvailableListings",
+    stateMutability: "view",
+    inputs: [],
+    outputs: [{ name: "", type: "uint256[]" }],
+  },
+  {
+    type: "function",
+    name: "listings",
+    stateMutability: "view",
+    inputs: [{ name: "", type: "uint256" }],
+    outputs: [
+      { name: "listingId", type: "uint256" },
+      { name: "owner", type: "address" },
+      { name: "nftContract", type: "address" },
+      { name: "tokenId", type: "uint256" },
+      { name: "price", type: "uint256" },
+      { name: "duration", type: "uint256" },
+      { name: "active", type: "bool" },
+      { name: "createdAt", type: "uint256" },
+    ],
+  },
+  {
+    type: "function",
+    name: "rentals",
+    stateMutability: "view",
+    inputs: [{ name: "", type: "uint256" }],
+    outputs: [
+      { name: "rentalId", type: "uint256" },
+      { name: "listingId", type: "uint256" },
+      { name: "renter", type: "address" },
+      { name: "owner", type: "address" },
+      { name: "nftContract", type: "address" },
+      { name: "tokenId", type: "uint256" },
+      { name: "amount", type: "uint256" },
+      { name: "startedAt", type: "uint256" },
+      { name: "expiresAt", type: "uint256" },
+      { name: "active", type: "bool" },
+    ],
+  },
+  {
+    type: "function",
+    name: "listingActiveRental",
+    stateMutability: "view",
+    inputs: [{ name: "", type: "uint256" }],
+    outputs: [{ name: "", type: "uint256" }],
+  },
+  {
+    type: "function",
+    name: "pendingEarnings",
+    stateMutability: "view",
+    inputs: [{ name: "", type: "address" }],
+    outputs: [{ name: "", type: "uint256" }],
+  },
+  {
+    type: "event",
+    name: "ListingCreated",
+    inputs: [
+      { name: "listingId", type: "uint256", indexed: true },
+      { name: "owner", type: "address", indexed: true },
+      { name: "nftContract", type: "address", indexed: true },
+      { name: "tokenId", type: "uint256", indexed: false },
+      { name: "price", type: "uint256", indexed: false },
+      { name: "duration", type: "uint256", indexed: false },
+    ],
+  },
+  {
+    type: "event",
+    name: "ListingCanceled",
+    inputs: [
+      { name: "listingId", type: "uint256", indexed: true },
+      { name: "owner", type: "address", indexed: true },
+    ],
+  },
+  {
+    type: "event",
+    name: "RentalCreated",
+    inputs: [
+      { name: "rentalId", type: "uint256", indexed: true },
+      { name: "listingId", type: "uint256", indexed: true },
+      { name: "renter", type: "address", indexed: true },
+      { name: "owner", type: "address", indexed: false },
+      { name: "amount", type: "uint256", indexed: false },
+      { name: "expiresAt", type: "uint256", indexed: false },
+    ],
+  },
+  {
+    type: "event",
+    name: "RentalExtended",
+    inputs: [
+      { name: "rentalId", type: "uint256", indexed: true },
+      { name: "newExpiresAt", type: "uint256", indexed: false },
+    ],
+  },
+  {
+    type: "event",
+    name: "RentalEnded",
+    inputs: [
+      { name: "rentalId", type: "uint256", indexed: true },
+      { name: "renter", type: "address", indexed: true },
+      { name: "owner", type: "address", indexed: true },
+    ],
+  },
+  {
+    type: "event",
+    name: "EarningsWithdrawn",
+    inputs: [
+      { name: "owner", type: "address", indexed: true },
+      { name: "amount", type: "uint256", indexed: false },
+    ],
+  },
+] as const;
+
+export const ERC721_ABI = [
+  {
+    type: "function",
+    name: "name",
+    stateMutability: "view",
+    inputs: [],
+    outputs: [{ name: "", type: "string" }],
+  },
+  {
+    type: "function",
+    name: "symbol",
+    stateMutability: "view",
+    inputs: [],
+    outputs: [{ name: "", type: "string" }],
+  },
+  {
+    type: "function",
+    name: "tokenURI",
+    stateMutability: "view",
+    inputs: [{ name: "tokenId", type: "uint256" }],
+    outputs: [{ name: "", type: "string" }],
+  },
+  {
+    type: "function",
+    name: "ownerOf",
+    stateMutability: "view",
+    inputs: [{ name: "tokenId", type: "uint256" }],
+    outputs: [{ name: "", type: "address" }],
+  },
+  {
+    type: "function",
+    name: "approve",
+    stateMutability: "nonpayable",
+    inputs: [
+      { name: "to", type: "address" },
+      { name: "tokenId", type: "uint256" },
+    ],
+    outputs: [],
+  },
+  {
+    type: "function",
+    name: "setApprovalForAll",
+    stateMutability: "nonpayable",
+    inputs: [
+      { name: "operator", type: "address" },
+      { name: "approved", type: "bool" },
+    ],
+    outputs: [],
+  },
+  {
+    type: "function",
+    name: "getApproved",
+    stateMutability: "view",
+    inputs: [{ name: "tokenId", type: "uint256" }],
+    outputs: [{ name: "", type: "address" }],
+  },
+  {
+    type: "function",
+    name: "isApprovedForAll",
+    stateMutability: "view",
+    inputs: [
+      { name: "owner", type: "address" },
+      { name: "operator", type: "address" },
+    ],
+    outputs: [{ name: "", type: "bool" }],
+  },
+  {
+    type: "function",
+    name: "mint",
+    stateMutability: "nonpayable",
+    inputs: [
+      { name: "to", type: "address" },
+      { name: "uri", type: "string" },
+    ],
+    outputs: [{ name: "", type: "uint256" }],
+  },
+] as const;
