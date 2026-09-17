@@ -120,7 +120,7 @@ struct Rental {
 ### Installation
 ```bash
 # Clone the repository
-git clone <repo-url>
+git clone https://github.com/liljhnxn/botrent.git
 cd botrent
 
 # Install dependencies (using legacy peer deps)
