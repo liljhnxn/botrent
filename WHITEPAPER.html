@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BotRent Protocol — Whitepaper & Pitch Deck</title>
+  <style>
+    :root {
+      --bg: #090d16;
+      --card: #111827;
+      --text: #e2e8f0;
+      --text-muted: #94a3b8;
+      --primary: #00f0ff;
+      --accent: #8b5cf6;
+      --border: #1f2937;
+    }
+    @media print {
+      body { background: #ffffff !important; color: #111827 !important; }
+      .no-print { display: none; }
+      .container { max-width: 100% !important; margin: 0 !important; padding: 0 !important; }
+      pre, code { background: #f3f4f6 !important; color: #111827 !important; border: 1px solid #e5e7eb !important; }
+      a { color: #0284c7 !important; }
+      .tag { border: 1px solid #cbd5e1 !important; color: #334155 !important; }
+    }
+    * { box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.6;
+      background-color: var(--bg);
+      color: var(--text);
+      margin: 0;
+      padding: 40px 20px;
+    }
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+      background: var(--card);
+      padding: 48px;
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+    }
+    .header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 24px;
+      margin-bottom: 32px;
+    }
+    .tag {
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 9999px;
+      background: rgba(0, 240, 255, 0.1);
+      color: var(--primary);
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 12px;
+    }
+    h1 {
+      font-size: 2.25rem;
+      margin: 0 0 12px 0;
+      color: #ffffff;
+      font-weight: 800;
+    }
+    h2 {
+      font-size: 1.5rem;
+      margin-top: 36px;
+      margin-bottom: 16px;
+      color: #ffffff;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 8px;
+    }
+    h3 {
+      font-size: 1.15rem;
+      margin-top: 24px;
+      color: var(--primary);
+    }
+    p, li {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+    ul, ol {
+      padding-left: 24px;
+    }
+    li {
+      margin-bottom: 8px;
+    }
+    strong {
+      color: #ffffff;
+    }
+    a {
+      color: var(--primary);
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    pre {
+      background: #030712;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px;
+      overflow-x: auto;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.85rem;
+      color: #38bdf8;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+      font-size: 0.9rem;
+    }
+    th, td {
+      border: 1px solid var(--border);
+      padding: 10px 14px;
+      text-align: left;
+    }
+    th {
+      background: #1e293b;
+      color: #ffffff;
+    }
+    .btn-print {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      padding: 12px 20px;
+      background: var(--primary);
+      color: #000;
+      font-weight: bold;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      box-shadow: 0 4px 14px rgba(0, 240, 255, 0.4);
+    }
+  </style>
+</head>
+<body>
+  <button class="btn-print no-print" onclick="window.print()">🖨️ Save as PDF / Print</button>
+  <div class="container">
+    <div class="header">
+      <span class="tag">Protocol Specification & Whitepaper</span>
+      <h1>BotRent Protocol</h1>
+      <p style="font-size: 1.1rem; color: #cbd5e1; margin-top: 0;"><em>"Rent NFTs. Own the Experience."</em></p>
+      <p style="font-size: 0.85rem; color: var(--text-muted);">Deployed on Botchain / Bohr Testnet (Chain ID: 968) • Smart Contract: <code>0x71fa5827144aAd0Af7B3C85873c4BF7741fCc10A</code></p>
+    </div>
+
+    <h2>Executive Summary</h2>
+    <p><strong>BotRent</strong> is a production-grade, non-custodial decentralized NFT rental protocol deployed on the <strong>Botchain / Bohr Network</strong> (Chain ID: 968). BotRent solves liquidity lockup by offering a trustless, smart-contract-enforced escrow marketplace. Token owners deposit ERC-721 digital assets into protocol escrow and define customized rental fees (in native BOT) and durations. Renters obtain verifiable on-chain utility rights without purchasing the underlying digital asset. The protocol enforces automated returns, reentrancy-guarded earnings distribution, and dual-authorization lifecycle terminations with zero administrative backdoors.</p>
+
+    <h2>1. Problem Statement</h2>
+    <ul>
+      <li><strong>Capital Lockup & Idle Assets:</strong> Over $15B in utility NFTs sit idle in cold storage without risk-free yield mechanisms.</li>
+      <li><strong>High Barrier to Entry:</strong> Gamers and Web3 users are priced out of high-value utility assets and metaverse plots.</li>
+      <li><strong>Custody Risks:</strong> Traditional rentals require high collateral or insecure peer-to-peer trust models.</li>
+    </ul>
+
+    <h2>2. The BotRent Solution</h2>
+    <ul>
+      <li><strong>Zero Collateral Required:</strong> Renters pay only the duration fee in native BOT.</li>
+      <li><strong>Guaranteed Asset Preservation:</strong> Escrow-backed via smart contract; returned directly to the owner.</li>
+      <li><strong>Instant Earnings:</strong> Rental revenue credited immediately to owner balance with pull-payment security.</li>
+      <li><strong>Authoritative On-Chain State:</strong> Games and dApps query <code>isRentalExpired()</code> and <code>getRental()</code> directly.</li>
+    </ul>
+
+    <h2>3. Smart Contract Specifications</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Attribute</th>
+          <th>Details</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Protocol Address</strong></td>
+          <td><code>0x71fa5827144aAd0Af7B3C85873c4BF7741fCc10A</code></td>
+        </tr>
+        <tr>
+          <td><strong>Mock NFT Address</strong></td>
+          <td><code>0xCCcbB597A4dD701E77F9427cf2a0907EDD35A640</code></td>
+        </tr>
+        <tr>
+          <td><strong>Network</strong></td>
+          <td>Botchain / Bohr Testnet (Chain ID 968)</td>
+        </tr>
+        <tr>
+          <td><strong>Solidity Version</strong></td>
+          <td>^0.8.24 with OpenZeppelin v5.1.0</td>
+        </tr>
+        <tr>
+          <td><strong>Test Coverage</strong></td>
+          <td>15 Unit Tests Passing (Hardhat)</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>4. Pitch Deck Slides Outline (10 Slides)</h2>
+    <ol>
+      <li><strong>Title & Vision:</strong> BotRent — Rent NFTs. Own the Experience.</li>
+      <li><strong>The Problem:</strong> Idle NFT capital and high financial barriers in GameFi.</li>
+      <li><strong>The Solution:</strong> Non-custodial escrow rentals powered by Botchain.</li>
+      <li><strong>Live Product:</strong> Next.js 14 Web3 interface with real-time countdowns.</li>
+      <li><strong>Protocol Architecture:</strong> Escrow deposit, rental rights issuance, and auto-settlement.</li>
+      <li><strong>Business Model:</strong> Micro-fees on rental volume and premium listing placements.</li>
+      <li><strong>Market Opportunity:</strong> $15B+ total NFT market expanding into Web3 gaming rentals.</li>
+      <li><strong>Security & Auditing:</strong> Non-reentrant pull payments, zero-admin backdoor policy.</li>
+      <li><strong>Roadmap:</strong> ERC-4907 integration, ERC-20 payment options, BotNS domain compatibility.</li>
+      <li><strong>Call to Action:</strong> Testnet dApp live on Botchain.</li>
+    </ol>
+
+    <h2>5. Official Links</h2>
+    <ul>
+      <li><strong>GitHub Repository:</strong> <a href="https://github.com/liljhnxn/botrent" target="_blank">https://github.com/liljhnxn/botrent</a></li>
+      <li><strong>Whitepaper Document:</strong> <a href="https://github.com/liljhnxn/botrent/blob/main/WHITEPAPER.md" target="_blank">https://github.com/liljhnxn/botrent/blob/main/WHITEPAPER.md</a></li>
+      <li><strong>Explorer Contract:</strong> <a href="https://scan.bohr.life/address/0x71fa5827144aAd0Af7B3C85873c4BF7741fCc10A" target="_blank">https://scan.bohr.life/address/0x71fa5827144aAd0Af7B3C85873c4BF7741fCc10A</a></li>
+    </ul>
+  </div>
+</body>
+</html>
