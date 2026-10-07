@@ -25,7 +25,7 @@ async function main() {
   console.log("✓ BotRent deployed at:", botRentAddress);
 
   // 2. Reuse or Deploy MockNFT
-  let mockNFTAddress = process.env.NEXT_PUBLIC_MOCK_NFT_CONTRACT_ADDRESS;
+  let mockNFTAddress: string = process.env.NEXT_PUBLIC_MOCK_NFT_CONTRACT_ADDRESS || "";
   let mockNFT: any;
 
   if (mockNFTAddress && (await ethers.provider.getCode(mockNFTAddress)).length > 2) {

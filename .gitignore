@@ -12,3 +12,4 @@ coverage.json
 *.log
 .DS_Store
 *.tsbuildinfo
+.vercel
