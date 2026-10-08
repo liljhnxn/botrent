@@ -17,7 +17,7 @@ async function main() {
   console.log("Chain ID:        ", network.chainId.toString());
 
   // 1. Deploy fresh BotRent
-  console.log("\nDeploying BotRent contract to Botchain Testnet...");
+  console.log("\nDeploying BotRent contract to BOT Chain Mainnet...");
   const BotRentFactory = await ethers.getContractFactory("BotRent");
   const botRent = await BotRentFactory.deploy();
   await botRent.waitForDeployment();
@@ -109,12 +109,10 @@ async function main() {
   console.log("==================================================");
   console.log("Project Name:             BotRent");
   console.log("Contract:                 BotRent.sol");
-  console.log("Network:                  Botchain Testnet");
-  console.log("Chain ID:                 968");
+  console.log("Network:                  BOT Chain Mainnet");
+  console.log("Chain ID:                 677");
   console.log("BotRent Contract Address: ", botRentAddress);
-  console.log("MockNFT Contract Address: ", mockNFTAddress);
-  console.log("Explorer BotRent:         https://scan.bohr.life/address/" + botRentAddress);
-  console.log("Explorer MockNFT:         https://scan.bohr.life/address/" + mockNFTAddress);
+  console.log("Explorer BotRent:         https://scan.botchain.ai/address/" + botRentAddress);
   console.log("==================================================");
 }
 

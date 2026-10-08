@@ -4,7 +4,7 @@ import React, { useState, useRef, useEffect } from "react";
 import { useAccount, useConnect, useDisconnect, useBalance } from "wagmi";
 import { formatAddress } from "@/utils/botns";
 import { Wallet, LogOut, Copy, Check, ChevronDown, ExternalLink } from "lucide-react";
-import { botchainTestnet } from "@/config/chains";
+import { botchain } from "@/config/chains";
 
 export function WalletButton() {
   const { address, isConnected, chainId } = useAccount();
@@ -56,7 +56,7 @@ export function WalletButton() {
     );
   }
 
-  const isCorrectNetwork = chainId === botchainTestnet.id;
+  const isCorrectNetwork = chainId === botchain.id;
 
   return (
     <div className="relative" ref={dropdownRef}>
@@ -92,8 +92,8 @@ export function WalletButton() {
               {address}
             </div>
             <div className="mt-1 flex items-center gap-1.5 text-xs text-slate-400">
-              <span className="w-1.5 h-1.5 rounded-full bg-brand-cyan" />
-              <span>{isCorrectNetwork ? "Botchain Testnet" : "Wrong Network"}</span>
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+              <span>{isCorrectNetwork ? "BOT Chain Mainnet" : "Wrong Network"}</span>
             </div>
           </div>
 
@@ -113,14 +113,14 @@ export function WalletButton() {
             </button>
 
             <a
-              href={`${botchainTestnet.blockExplorers.default.url}/address/${address}`}
+              href={`${botchain.blockExplorers.default.url}/address/${address}`}
               target="_blank"
               rel="noopener noreferrer"
               className="w-full flex items-center justify-between px-3 py-2 text-xs font-medium text-slate-300 hover:text-white hover:bg-white/5 rounded-xl transition-colors"
             >
               <span className="flex items-center gap-2">
                 <ExternalLink className="w-3.5 h-3.5" />
-                View on Bohr Scan
+                View on BOT Scan
               </span>
             </a>
 

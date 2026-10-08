@@ -16,7 +16,7 @@ import {
   Loader2, 
   ExternalLink 
 } from "lucide-react";
-import { botchainTestnet } from "@/config/chains";
+import { botchain } from "@/config/chains";
 
 interface RentModalProps {
   listing: Listing | null;
@@ -103,19 +103,19 @@ export function RentModal({ listing, isOpen, onClose, onSuccess }: RentModalProp
             <div>
               <h4 className="text-lg font-bold text-white">Rental Successfully Activated!</h4>
               <p className="text-xs text-slate-400 mt-1 max-w-sm mx-auto leading-relaxed">
-                Your rental rights have been registered on Botchain Testnet. The NFT is held in protocol escrow for the duration.
+                Your rental rights have been registered on BOT Chain Mainnet. The NFT is held in protocol escrow for the duration.
               </p>
             </div>
 
             {txHash && (
               <div className="pt-2">
                 <a
-                  href={`${botchainTestnet.blockExplorers.default.url}/tx/${txHash}`}
+                  href={`${botchain.blockExplorers.default.url}/tx/${txHash}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-1.5 text-xs font-mono text-brand-cyan hover:underline"
                 >
-                  View Transaction on Bohr Scan <ExternalLink className="w-3.5 h-3.5" />
+                  View Transaction on BOT Scan <ExternalLink className="w-3.5 h-3.5" />
                 </a>
               </div>
             )}

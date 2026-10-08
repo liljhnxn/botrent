@@ -2,7 +2,7 @@
 
 import React from "react";
 import { TxStatus } from "@/types";
-import { botchainTestnet } from "@/config/chains";
+import { botchain } from "@/config/chains";
 import { 
   CheckCircle2, 
   XCircle, 
@@ -82,7 +82,7 @@ export function TransactionModal({ status, isOpen, onClose }: TransactionModalPr
             <div className="flex items-center justify-between text-xs pt-2 border-t border-white/5">
               <span className="text-slate-400">Transaction:</span>
               <a
-                href={`${botchainTestnet.blockExplorers.default.url}/tx/${status.txHash}`}
+                href={`${botchain.blockExplorers.default.url}/tx/${status.txHash}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-1 font-mono text-brand-cyan hover:underline"

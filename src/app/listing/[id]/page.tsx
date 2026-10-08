@@ -12,7 +12,7 @@ import { Listing } from "@/types";
 import { formatAddress } from "@/utils/botns";
 import { formatEther } from "viem";
 import { RentModal } from "@/components/RentModal";
-import { botchainTestnet } from "@/config/chains";
+import { botchain } from "@/config/chains";
 import { 
   ArrowLeft, 
   Clock, 
@@ -115,7 +115,7 @@ export default function ListingDetailPage() {
     return (
       <div className="py-24 text-center space-y-4">
         <h2 className="text-2xl font-bold text-white">Listing Not Found</h2>
-        <p className="text-xs text-slate-400">This listing ID does not exist on Botchain Testnet.</p>
+        <p className="text-xs text-slate-400">This listing ID does not exist on BOT Chain Mainnet.</p>
         <Link
           href="/explore"
           className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs font-semibold bg-white/10 text-white hover:bg-white/15"
@@ -219,7 +219,7 @@ export default function ListingDetailPage() {
             <div className="flex items-center justify-between text-xs">
               <span className="text-slate-400">ERC-721 Contract:</span>
               <a
-                href={`${botchainTestnet.blockExplorers.default.url}/token/${listing.nftContract}`}
+                href={`${botchain.blockExplorers.default.url}/token/${listing.nftContract}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="font-mono text-brand-cyan hover:underline flex items-center gap-1"
@@ -231,7 +231,7 @@ export default function ListingDetailPage() {
             <div className="flex items-center justify-between text-xs">
               <span className="text-slate-400">Escrow Address:</span>
               <a
-                href={`${botchainTestnet.blockExplorers.default.url}/address/${BOTRENT_CONTRACT_ADDRESS}`}
+                href={`${botchain.blockExplorers.default.url}/address/${BOTRENT_CONTRACT_ADDRESS}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="font-mono text-slate-300 hover:text-white flex items-center gap-1"
@@ -362,7 +362,7 @@ export default function ListingDetailPage() {
                 </button>
                 {!isConnected && (
                   <p className="text-[11px] text-slate-400 text-center">
-                    Connect your Web3 wallet to rent this NFT on Botchain Testnet.
+                    Connect your Web3 wallet to rent this NFT on BOT Chain Mainnet.
                   </p>
                 )}
               </div>

@@ -7,7 +7,7 @@ import { formatEther } from "viem";
 import { useReadContract, useWriteContract } from "wagmi";
 import { ERC721_ABI, BOTRENT_CONTRACT_ADDRESS, BOTRENT_ABI } from "@/config/contracts";
 import { Countdown } from "./Countdown";
-import { botchainTestnet } from "@/config/chains";
+import { botchain } from "@/config/chains";
 import { 
   Shield, 
   ExternalLink, 
@@ -234,11 +234,11 @@ export function RentalCard({ rental, onActionComplete }: RentalCardProps) {
         )}
 
         <a
-          href={`${botchainTestnet.blockExplorers.default.url}/token/${rental.nftContract}?a=${rental.tokenId}`}
+          href={`${botchain.blockExplorers.default.url}/token/${rental.nftContract}?a=${rental.tokenId}`}
           target="_blank"
           rel="noopener noreferrer"
           className="p-2 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-slate-400 hover:text-white transition-colors"
-          title="View on Bohr Scan"
+          title="View on BOT Scan"
         >
           <ExternalLink className="w-4 h-4" />
         </a>

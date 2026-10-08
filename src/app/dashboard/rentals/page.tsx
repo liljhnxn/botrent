@@ -85,7 +85,7 @@ export default function RentalsDashboardPage() {
           <AlertCircle className="w-10 h-10 text-brand-amber mx-auto" />
           <h3 className="text-lg font-bold text-white">Wallet Not Connected</h3>
           <p className="text-xs text-slate-400 max-w-sm mx-auto">
-            Please connect your Web3 wallet to view your active rentals and rental history on Botchain Testnet.
+            Please connect your Web3 wallet to view your active rentals and rental history on BOT Chain Mainnet.
           </p>
         </div>
       ) : isLoading ? (
@@ -98,7 +98,7 @@ export default function RentalsDashboardPage() {
           <History className="w-10 h-10 text-slate-400 mx-auto" />
           <h3 className="text-lg font-bold text-white">No Rentals Found</h3>
           <p className="text-xs text-slate-400 max-w-md mx-auto">
-            You have not rented any NFTs yet on Botchain Testnet. Discover available rentals in the marketplace.
+            You have not rented any NFTs yet on BOT Chain Mainnet. Discover available rentals in the marketplace.
           </p>
           <div className="pt-2">
             <Link

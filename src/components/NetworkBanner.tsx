@@ -2,14 +2,14 @@
 
 import React from "react";
 import { useAccount, useSwitchChain } from "wagmi";
-import { botchainTestnet } from "@/config/chains";
+import { botchain } from "@/config/chains";
 import { AlertTriangle, RefreshCw } from "lucide-react";
 
 export function NetworkBanner() {
   const { isConnected, chainId } = useAccount();
   const { switchChain, isPending } = useSwitchChain();
 
-  if (!isConnected || chainId === botchainTestnet.id) {
+  if (!isConnected || chainId === botchain.id) {
     return null;
   }
 
@@ -20,11 +20,11 @@ export function NetworkBanner() {
           <AlertTriangle className="w-4 h-4 shrink-0 text-brand-amber animate-pulse" />
           <span>
             You are connected to an unsupported network. Please switch to{" "}
-            <strong>Botchain Testnet (Chain ID 968)</strong> to rent or list NFTs.
+            <strong>BOT Chain Mainnet (Chain ID 677)</strong> to rent or list NFTs.
           </span>
         </div>
         <button
-          onClick={() => switchChain({ chainId: botchainTestnet.id })}
+          onClick={() => switchChain({ chainId: botchain.id })}
           disabled={isPending}
           className="px-3.5 py-1 text-xs font-semibold bg-brand-amber text-black rounded-lg hover:bg-brand-amber/90 transition-all flex items-center gap-1.5 shadow-sm shrink-0 disabled:opacity-50"
         >

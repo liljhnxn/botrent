@@ -23,7 +23,7 @@ import {
   Clock,
   Wand2
 } from "lucide-react";
-import { botchainTestnet } from "@/config/chains";
+import { botchain } from "@/config/chains";
 
 export default function CreateListingPage() {
   const router = useRouter();
@@ -31,7 +31,7 @@ export default function CreateListingPage() {
   const { writeContractAsync } = useWriteContract();
 
   // Form State
-  const [nftContract, setNftContract] = useState<string>(MOCK_NFT_CONTRACT_ADDRESS);
+  const [nftContract, setNftContract] = useState<string>("");
   const [tokenId, setTokenId] = useState<string>("");
   const [price, setPrice] = useState<string>("0.05");
   const [durationDays, setDurationDays] = useState<string>("7");
@@ -92,53 +92,7 @@ export default function CreateListingPage() {
         BOTRENT_CONTRACT_ADDRESS.toLowerCase());
 
   const publicClient = usePublicClient();
-  const [mintedInfo, setMintedInfo] = useState<{ tokenId: string; txHash: string } | null>(null);
 
-  // Mint Test NFT Helper
-  const handleMintTestNFT = async () => {
-    if (!address) return;
-    try {
-      setIsMintingTestNFT(true);
-      setErrorMessage(null);
-      setMintedInfo(null);
-      const randomSeed = Math.floor(Math.random() * 10000);
-      const hash = await writeContractAsync({
-        address: MOCK_NFT_CONTRACT_ADDRESS,
-        abi: ERC721_ABI,
-        functionName: "mint",
-        args: [
-          address,
-          `https://api.dicebear.com/7.x/bottts/svg?seed=${randomSeed}`,
-        ],
-      });
-
-      // Wait for receipt and extract minted Token ID from Transfer event
-      let detectedTokenId: string | null = null;
-      if (publicClient) {
-        const receipt = await publicClient.waitForTransactionReceipt({ hash });
-        if (receipt.logs && receipt.logs.length > 0) {
-          // Transfer event topic: Transfer(from, to, tokenId) -> topic[3] is tokenId
-          const transferLog = receipt.logs[receipt.logs.length - 1];
-          if (transferLog.topics && transferLog.topics[3]) {
-            detectedTokenId = BigInt(transferLog.topics[3]).toString();
-          }
-        }
-      }
-
-      setNftContract(MOCK_NFT_CONTRACT_ADDRESS);
-      if (detectedTokenId) {
-        setTokenId(detectedTokenId);
-        setMintedInfo({ tokenId: detectedTokenId, txHash: hash });
-      } else {
-        setMintedInfo({ tokenId: "Confirmed", txHash: hash });
-      }
-    } catch (err: any) {
-      console.error("Mint error:", err);
-      setErrorMessage(err?.shortMessage || err?.message || "Failed to mint test NFT.");
-    } finally {
-      setIsMintingTestNFT(false);
-    }
-  };
 
   // Step 1: Approve
   const handleApprove = async () => {
@@ -206,63 +160,7 @@ export default function CreateListingPage() {
         </p>
       </div>
 
-      {/* Testnet Faucet Banner */}
-      <div className="rounded-2xl bg-gradient-to-r from-brand-violet/20 via-surface-100 to-surface-100 border border-brand-violet/30 p-5 flex flex-col sm:flex-row items-center justify-between gap-4 shadow-lg">
-        <div className="flex items-center gap-3.5">
-          <div className="w-10 h-10 rounded-xl bg-brand-violet/20 border border-brand-violet/40 flex items-center justify-center shrink-0">
-            <Wand2 className="w-5 h-5 text-brand-cyan" />
-          </div>
-          <div>
-            <h4 className="text-sm font-bold text-white">Need a Test NFT on Botchain?</h4>
-            <p className="text-xs text-slate-400">
-              Mint a demo token from our verified testnet contract in 1-click.
-            </p>
-          </div>
-        </div>
-        <button
-          type="button"
-          onClick={handleMintTestNFT}
-          disabled={isMintingTestNFT || !isConnected}
-          className="w-full sm:w-auto px-4 py-2.5 rounded-xl font-semibold text-xs bg-white/10 hover:bg-white/15 text-white border border-white/10 transition-all flex items-center justify-center gap-2 shrink-0 disabled:opacity-50"
-        >
-          {isMintingTestNFT ? (
-            <>
-              <Loader2 className="w-3.5 h-3.5 animate-spin" />
-              Minting Demo NFT...
-            </>
-          ) : (
-            <>
-              <Sparkles className="w-3.5 h-3.5 text-brand-cyan" />
-              Mint Demo NFT
-            </>
-          )}
-        </button>
-      </div>
 
-      {/* Minted Token ID Notification */}
-      {mintedInfo && (
-        <div className="rounded-2xl bg-brand-emerald/15 border border-brand-emerald/40 p-4 flex items-center justify-between gap-4 animate-in fade-in slide-in-from-top-2 duration-300">
-          <div className="flex items-center gap-3">
-            <CheckCircle2 className="w-5 h-5 text-brand-emerald shrink-0" />
-            <div>
-              <p className="text-xs font-bold text-white">
-                Success! Minted Token ID: <span className="font-mono text-brand-cyan text-sm underline">#{mintedInfo.tokenId}</span>
-              </p>
-              <p className="text-[11px] text-slate-300">
-                This token has been automatically filled into the form below for you.
-              </p>
-            </div>
-          </div>
-          <a
-            href={`${botchainTestnet.blockExplorers.default.url}/tx/${mintedInfo.txHash}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-[11px] font-mono text-brand-cyan hover:underline flex items-center gap-1 shrink-0"
-          >
-            Bohr Scan <ExternalLink className="w-3 h-3" />
-          </a>
-        </div>
-      )}
 
       {listingSuccess ? (
         <div className="rounded-3xl bg-surface-100 border border-brand-emerald/30 p-8 text-center space-y-5 shadow-2xl">
@@ -272,19 +170,19 @@ export default function CreateListingPage() {
           <div>
             <h3 className="text-2xl font-bold text-white">NFT Successfully Listed!</h3>
             <p className="text-xs text-slate-400 mt-1 max-w-md mx-auto leading-relaxed">
-              Your NFT has been transferred into BotRent protocol escrow. Renters on Botchain Testnet can now discover and rent your asset.
+              Your NFT has been transferred into BotRent protocol escrow. Renters on BOT Chain Mainnet can now discover and rent your asset.
             </p>
           </div>
 
           {txHash && (
             <div className="pt-1">
               <a
-                href={`${botchainTestnet.blockExplorers.default.url}/tx/${txHash}`}
+                href={`${botchain.blockExplorers.default.url}/tx/${txHash}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-1.5 text-xs font-mono text-brand-cyan hover:underline"
               >
-                View Transaction on Bohr Scan <ExternalLink className="w-3.5 h-3.5" />
+                View Transaction on BOT Scan <ExternalLink className="w-3.5 h-3.5" />
               </a>
             </div>
           )}
@@ -321,7 +219,7 @@ export default function CreateListingPage() {
               required
             />
             <p className="text-[11px] text-slate-400">
-              Supports standard ERC-721 collections on Botchain Testnet. Default is the verified MockNFT contract.
+              Supports standard ERC-721 collections on BOT Chain Mainnet.
             </p>
           </div>
 

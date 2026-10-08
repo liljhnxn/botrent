@@ -4,7 +4,7 @@ import React from "react";
 import Link from "next/link";
 import { useReadContract } from "wagmi";
 import { BOTRENT_CONTRACT_ADDRESS, BOTRENT_ABI, MOCK_NFT_CONTRACT_ADDRESS } from "@/config/contracts";
-import { botchainTestnet } from "@/config/chains";
+import { botchain } from "@/config/chains";
 import { 
   KeyRound, 
   ShieldCheck, 
@@ -54,7 +54,7 @@ export default function HomePage() {
     },
     {
       q: "What network is BotRent running on?",
-      a: "BotRent runs natively on Botchain Testnet (Chain ID: 968) with sub-second block times and minimal gas fees denominated in native BOT.",
+      a: "BotRent runs natively on BOT Chain Mainnet (Chain ID: 677) with sub-second block times and minimal gas fees denominated in native BOT.",
     },
   ];
 
@@ -62,10 +62,16 @@ export default function HomePage() {
     <div className="space-y-24 py-6">
       {/* Hero Section */}
       <section className="relative text-center max-w-4xl mx-auto pt-8 pb-12">
-        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-surface-100/90 border border-brand-cyan/30 text-xs font-semibold text-brand-cyan mb-6 shadow-[0_0_20px_rgba(0,240,255,0.15)] animate-pulse-slow">
+        <a
+          href={`${botchain.blockExplorers.default.url}/address/${BOTRENT_CONTRACT_ADDRESS}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-surface-100/90 hover:bg-surface-200 border border-brand-cyan/30 hover:border-brand-cyan/60 text-xs font-semibold text-brand-cyan mb-6 shadow-[0_0_20px_rgba(0,240,255,0.15)] transition-all group"
+        >
           <Sparkles className="w-3.5 h-3.5" />
-          <span>Botchain Testnet Protocol Live (Chain ID 968)</span>
-        </div>
+          <span>BOT Chain Mainnet Protocol Live (Chain ID 677)</span>
+          <ExternalLink className="w-3 h-3 text-slate-400 group-hover:text-brand-cyan transition-colors" />
+        </a>
 
         <h1 className="text-4xl sm:text-6xl lg:text-7xl font-black tracking-tight text-white leading-tight">
           Rent NFTs. <br />
@@ -94,6 +100,17 @@ export default function HomePage() {
           >
             List an NFT
           </Link>
+
+          <a
+            href={`${botchain.blockExplorers.default.url}/address/${BOTRENT_CONTRACT_ADDRESS}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-full sm:w-auto px-6 py-4 rounded-xl font-bold text-sm bg-white/5 hover:bg-white/10 border border-white/10 hover:border-brand-cyan/40 text-slate-300 hover:text-white transition-all flex items-center justify-center gap-2 group"
+          >
+            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+            <span>BOT Scan Explorer</span>
+            <ExternalLink className="w-4 h-4 text-slate-400 group-hover:text-brand-cyan group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+          </a>
         </div>
 
         {/* Protocol Custody Highlight Banner */}
@@ -265,9 +282,9 @@ export default function HomePage() {
       <section className="rounded-3xl bg-surface-100/80 border border-white/10 p-8 sm:p-12 relative overflow-hidden">
         <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-8">
           <div className="space-y-4 max-w-xl">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-brand-cyan/15 text-brand-cyan text-xs font-semibold">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-emerald-500/15 text-emerald-400 text-xs font-semibold">
               <Cpu className="w-4 h-4" />
-              Powered by Bohr Testnet
+              Powered by BOT Chain Mainnet
             </div>
             <h3 className="text-2xl sm:text-3xl font-extrabold text-white">
               Built on High-Performance Botchain Infrastructure
@@ -277,7 +294,7 @@ export default function HomePage() {
             </p>
             <div className="flex flex-wrap gap-4 pt-2">
               <a
-                href={`${botchainTestnet.blockExplorers.default.url}/address/${BOTRENT_CONTRACT_ADDRESS}`}
+                href={`${botchain.blockExplorers.default.url}/address/${BOTRENT_CONTRACT_ADDRESS}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="px-4 py-2 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-xs font-medium text-white flex items-center gap-2 transition-colors"
@@ -290,11 +307,11 @@ export default function HomePage() {
           <div className="w-full md:w-80 rounded-2xl bg-surface-200/90 border border-white/10 p-5 space-y-3 font-mono text-xs">
             <div className="flex items-center justify-between pb-2 border-b border-white/5">
               <span className="text-slate-400">Network:</span>
-              <span className="text-white font-bold">Botchain Testnet</span>
+              <span className="text-white font-bold">BOT Chain Mainnet</span>
             </div>
             <div className="flex items-center justify-between pb-2 border-b border-white/5">
               <span className="text-slate-400">Chain ID:</span>
-              <span className="text-brand-cyan font-bold">968</span>
+              <span className="text-brand-cyan font-bold">677</span>
             </div>
             <div className="flex items-center justify-between pb-2 border-b border-white/5">
               <span className="text-slate-400">Currency:</span>

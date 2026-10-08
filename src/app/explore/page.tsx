@@ -14,9 +14,11 @@ import {
   Sparkles, 
   Coins, 
   ShieldCheck,
-  PlusCircle
+  PlusCircle,
+  ExternalLink 
 } from "lucide-react";
 import Link from "next/link";
+import { botchain } from "@/config/chains";
 
 export default function ExplorePage() {
   const { address } = useAccount();
@@ -94,8 +96,18 @@ export default function ExplorePage() {
       {/* Protocol Custody Notice */}
       <div className="rounded-xl bg-surface-100/60 border border-brand-cyan/20 p-4 text-xs text-slate-300 flex items-start gap-3">
         <ShieldCheck className="w-5 h-5 text-brand-cyan shrink-0 mt-0.5" />
-        <div className="leading-relaxed">
-          <strong className="text-white">Escrow Guarantee:</strong> All listed NFTs are securely locked in the BotRent contract on Botchain Testnet. Rentals grant temporary verifiable on-chain rights.
+        <div className="leading-relaxed flex-1 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+          <span>
+            <strong className="text-white">Escrow Guarantee:</strong> All listed NFTs are securely locked in the BotRent contract on BOT Chain Mainnet. Rentals grant temporary verifiable on-chain rights.
+          </span>
+          <a
+            href={`${botchain.blockExplorers.default.url}/address/${BOTRENT_CONTRACT_ADDRESS}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-brand-cyan hover:underline font-semibold inline-flex items-center gap-1 shrink-0"
+          >
+            BOT Scan <ExternalLink className="w-3.5 h-3.5" />
+          </a>
         </div>
       </div>
 
@@ -131,7 +143,7 @@ export default function ExplorePage() {
       {loadingIds ? (
         <div className="py-20 text-center space-y-3">
           <RefreshCw className="w-8 h-8 text-brand-cyan animate-spin mx-auto" />
-          <p className="text-xs text-slate-400">Loading live on-chain listings from Botchain Testnet...</p>
+          <p className="text-xs text-slate-400">Loading live on-chain listings from BOT Chain Mainnet...</p>
         </div>
       ) : listingIds.length === 0 ? (
         <div className="rounded-2xl bg-surface-100/50 border border-white/10 p-12 text-center space-y-4">

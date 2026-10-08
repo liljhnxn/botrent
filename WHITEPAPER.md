@@ -7,7 +7,7 @@
 
 ## Executive Summary
 
-**BotRent** is a production-grade, non-custodial decentralized NFT rental protocol deployed on the **Botchain / Bohr Network** (Chain ID: `968`). 
+**BotRent** is a production-grade, non-custodial decentralized NFT rental protocol deployed on the **BOT Chain Mainnet** (Chain ID: `677`). 
 
 The current Web3 asset economy faces a fundamental liquidity and accessibility paradox: valuable NFTs (game assets, metaverse plots, community passes, and domain handles) sit idle in cold wallets, while prospective participants face exorbitant capital barriers to access utility.
 
@@ -43,7 +43,7 @@ BotRent introduces an **escrow-backed, duration-based rental architecture**:
           v                                               v
 +--------------------------------------------------------------------+
 |                       BotRent Escrow Contract                      |
-|                     (Chain ID: 968 / Botchain)                     |
+|                     (Chain ID: 677 / BOT Chain)                    |
 |                                                                    |
 |  - Escrow Token Vault (IERC721Receiver)                            |
 |  - Timestamp Validity Engine (startedAt -> expiresAt)             |
@@ -80,11 +80,10 @@ BotRent introduces an **escrow-backed, duration-based rental architecture**:
 * `withdrawEarnings()`: Pull-payment model prevents reentrancy or DoS attacks.
 
 ### 3.3 Deployed Infrastructure
-* **Network**: Botchain / Bohr Testnet (Chain ID `968`)
-* **RPC Endpoint**: `https://rpc.bohr.life`
-* **BotRent Protocol Address**: `0x71fa5827144aAd0Af7B3C85873c4BF7741fCc10A`
-* **Mock NFT (Bohr Cyber Relics)**: `0xCCcbB597A4dD701E77F9427cf2a0907EDD35A640`
-* **Block Explorer**: `https://scan.bohr.life`
+* **Network**: BOT Chain Mainnet (Chain ID `677`)
+* **RPC Endpoint**: `https://rpc.botchain.ai`
+* **BotRent Protocol Address**: `0xd2a552F197B77607Bc4419C02E509db617a3F0a1`
+* **Block Explorer**: `https://scan.botchain.ai`
 
 ---
 
@@ -108,12 +107,12 @@ BotRent introduces an **escrow-backed, duration-based rental architecture**:
 * **Slide 7: Market Opportunity** — $15B+ total NFT market cap expanding into $30B+ Web3 gaming and metaverse rental economy.
 * **Slide 8: Security & Testing** — 100% automated test coverage (15 Hardhat unit tests), zero-admin backdoor policy, pull-payment safety.
 * **Slide 9: Roadmap** — ERC-4907 integration, ERC-20 payment support, BotNS resolution, automated keeper bot settlement.
-* **Slide 10: Call to Action & Links** — Try the live testnet deployment, explore verified smart contracts, and join our developer ecosystem.
+* **Slide 10: Call to Action & Links** — Try the live deployment, explore verified smart contracts, and join our developer ecosystem.
 
 ---
 
 ## 6. Official Links & Resources
 
-* **Live dApp & Explorer**: Deployed on Botchain Testnet (https://scan.bohr.life/address/0x71fa5827144aAd0Af7B3C85873c4BF7741fCc10A)
+* **Live dApp & Explorer**: Deployed on BOT Chain Mainnet (https://scan.botchain.ai/address/0xd2a552F197B77607Bc4419C02E509db617a3F0a1)
 * **GitHub Repository**: https://github.com/liljhnxn/botrent
 * **Whitepaper & Specs**: https://github.com/liljhnxn/botrent/blob/main/WHITEPAPER.md

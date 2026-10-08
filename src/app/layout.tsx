@@ -12,9 +12,9 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: "BotRent — Decentralized NFT Rental Protocol | Botchain",
+  title: "BotRent — Decentralized NFT Rental Protocol | BOT Chain",
   description:
-    "Decentralized escrow-based NFT rental protocol on Botchain Testnet. Rent NFTs. Own the experience without purchasing underlying assets.",
+    "Decentralized escrow-based NFT rental protocol on BOT Chain Mainnet. Rent NFTs. Own the experience without purchasing underlying assets.",
   keywords: ["NFT Rental", "Botchain", "Bohr", "Web3", "Smart Contracts", "Escrow", "Decentralized Finance"],
   authors: [{ name: "BotRent Protocol" }],
 };

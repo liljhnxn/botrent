@@ -2,7 +2,7 @@ import React from "react";
 import Link from "next/link";
 import { KeyRound, ShieldAlert, ExternalLink, Cpu } from "lucide-react";
 import { BOTRENT_CONTRACT_ADDRESS, MOCK_NFT_CONTRACT_ADDRESS } from "@/config/contracts";
-import { botchainTestnet } from "@/config/chains";
+import { botchain } from "@/config/chains";
 
 export function Footer() {
   return (
@@ -25,7 +25,7 @@ export function Footer() {
               Rent NFTs. Own the Experience.
             </p>
             <p className="text-xs text-slate-400 max-w-md leading-relaxed">
-              Temporary NFT access powered by Botchain. BotRent lets NFT owners list digital assets for temporary rental while users access on-chain utility without purchasing the underlying token.
+              Temporary NFT access powered by BOT Chain. BotRent lets NFT owners list digital assets for temporary rental while users access on-chain utility without purchasing the underlying token.
             </p>
 
             {/* Protocol Disclaimer Alert */}
@@ -71,12 +71,12 @@ export function Footer() {
           <div className="space-y-3">
             <h4 className="text-white font-semibold text-sm tracking-wide flex items-center gap-1.5">
               <Cpu className="w-4 h-4 text-brand-purple" />
-              Botchain Testnet
+              BOT Chain Mainnet
             </h4>
             <ul className="space-y-2.5 text-xs">
               <li className="flex items-center justify-between">
                 <span className="text-slate-400">Chain ID:</span>
-                <span className="font-mono text-slate-200">968</span>
+                <span className="font-mono text-slate-200">677</span>
               </li>
               <li className="flex items-center justify-between">
                 <span className="text-slate-400">Native Token:</span>
@@ -84,22 +84,12 @@ export function Footer() {
               </li>
               <li>
                 <a
-                  href={`${botchainTestnet.blockExplorers.default.url}/address/${BOTRENT_CONTRACT_ADDRESS}`}
+                  href={`${botchain.blockExplorers.default.url}/address/${BOTRENT_CONTRACT_ADDRESS}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-1.5 text-brand-cyan hover:underline"
                 >
                   BotRent Contract <ExternalLink className="w-3 h-3" />
-                </a>
-              </li>
-              <li>
-                <a
-                  href={`${botchainTestnet.blockExplorers.default.url}/address/${MOCK_NFT_CONTRACT_ADDRESS}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 text-slate-300 hover:text-white"
-                >
-                  Demo NFT Faucet <ExternalLink className="w-3 h-3" />
                 </a>
               </li>
             </ul>
@@ -108,11 +98,11 @@ export function Footer() {
 
         {/* Bottom Bar */}
         <div className="mt-12 pt-8 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400">
-          <p>© 2026 BotRent Protocol. Built for Botchain Testnet.</p>
+          <p>© 2026 BotRent Protocol. Built for BOT Chain Mainnet.</p>
           <div className="flex items-center gap-4">
             <span className="flex items-center gap-1.5">
               <span className="w-2 h-2 rounded-full bg-brand-emerald shadow-[0_0_6px_#10b981]" />
-              RPC Operational (https://rpc.bohr.life)
+              RPC Operational (https://rpc.botchain.ai)
             </span>
           </div>
         </div>

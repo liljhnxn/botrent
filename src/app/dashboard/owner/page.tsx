@@ -17,9 +17,11 @@ import {
   ShieldAlert, 
   CheckCircle2, 
   Loader2, 
-  AlertCircle 
+  AlertCircle,
+  ExternalLink 
 } from "lucide-react";
 import Link from "next/link";
+import { botchain } from "@/config/chains";
 
 export default function OwnerDashboardPage() {
   const { address, isConnected } = useAccount();
@@ -186,7 +188,7 @@ export default function OwnerDashboardPage() {
       {withdrawSuccess && (
         <div className="rounded-xl bg-brand-emerald/10 border border-brand-emerald/30 p-4 text-xs text-brand-emerald flex items-center gap-2">
           <CheckCircle2 className="w-4 h-4 shrink-0" />
-          <span>Earnings successfully transferred to your wallet on Botchain Testnet!</span>
+          <span>Earnings successfully transferred to your wallet on BOT Chain Mainnet!</span>
         </div>
       )}
 
@@ -200,7 +202,17 @@ export default function OwnerDashboardPage() {
       <div className="space-y-4">
         <div className="flex items-center justify-between">
           <h2 className="text-xl font-bold text-white tracking-tight">My Rental Listings</h2>
-          <span className="text-xs text-slate-400">Total: {ids.length}</span>
+          <div className="flex items-center gap-3">
+            <span className="text-xs text-slate-400">Total: {ids.length}</span>
+            <a
+              href={`${botchain.blockExplorers.default.url}/address/${BOTRENT_CONTRACT_ADDRESS}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 px-3 py-1 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-xs text-brand-cyan hover:underline transition-colors"
+            >
+              BOT Scan <ExternalLink className="w-3 h-3" />
+            </a>
+          </div>
         </div>
 
         {!isConnected ? (

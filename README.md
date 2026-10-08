@@ -1,12 +1,12 @@
 # BotRent — Decentralized NFT Rental Protocol
 
 > **"Rent NFTs. Own the Experience."**  
-> *Temporary NFT access powered by Botchain Testnet (Chain ID: 968).*
+> *Temporary NFT access powered by BOT Chain Mainnet (Chain ID: 677).*
 
 ---
 
 ## 1. Overview
-**BotRent** is a production-grade, non-custodial decentralized NFT rental protocol deployed on the **Botchain / Bohr Testnet**. 
+**BotRent** is a production-grade, non-custodial decentralized NFT rental protocol deployed on the **BOT Chain Mainnet**. 
 
 BotRent allows ERC-721 NFT owners to deposit tokens into protocol escrow and offer temporary rental rights for a custom fee in native **BOT** and specified durations. Renters gain verifiable on-chain rental rights without purchasing the underlying digital asset. The original owner maintains underlying economic ownership and can withdraw accumulated rental earnings at any time.
 
@@ -47,17 +47,16 @@ BotRent allows ERC-721 NFT owners to deposit tokens into protocol escrow and off
 
 ---
 
-## 3. Botchain Testnet Deployments
+## 3. BOT Chain Mainnet Deployment
 
 | Component | Address / Details | Explorer Link |
 | :--- | :--- | :--- |
-| **BotRent Protocol** | `0x71fa5827144aAd0Af7B3C85873c4BF7741fCc10A` | [Bohr Scan Contract](https://scan.bohr.life/address/0x71fa5827144aAd0Af7B3C85873c4BF7741fCc10A) |
-| **MockNFT (Bohr Cyber Relics)** | `0xCCcbB597A4dD701E77F9427cf2a0907EDD35A640` | [Bohr Scan MockNFT](https://scan.bohr.life/address/0xCCcbB597A4dD701E77F9427cf2a0907EDD35A640) |
-| **Network Name** | Botchain / Bohr Testnet | - |
-| **Chain ID** | `968` | - |
+| **BotRent Protocol** | `0xd2a552F197B77607Bc4419C02E509db617a3F0a1` | [BOT Scan Contract](https://scan.botchain.ai/address/0xd2a552F197B77607Bc4419C02E509db617a3F0a1) |
+| **Network Name** | BOT Chain Mainnet | - |
+| **Chain ID** | `677` | - |
 | **Native Currency** | `BOT` (18 Decimals) | - |
-| **RPC Endpoint** | `https://rpc.bohr.life` | - |
-| **Block Explorer** | `https://scan.bohr.life` | - |
+| **RPC Endpoint** | `https://rpc.botchain.ai` | - |
+| **Block Explorer** | `https://scan.botchain.ai` | - |
 
 ---
 
@@ -135,12 +134,11 @@ cp .env.example .env.local
 
 Ensure `.env.local` has:
 ```env
-NEXT_PUBLIC_BOTCHAIN_CHAIN_ID=968
-NEXT_PUBLIC_BOTCHAIN_RPC_URL=https://rpc.bohr.life
-NEXT_PUBLIC_BOTCHAIN_EXPLORER_URL=https://scan.bohr.life
+NEXT_PUBLIC_BOTCHAIN_CHAIN_ID=677
+NEXT_PUBLIC_BOTCHAIN_RPC_URL=https://rpc.botchain.ai
+NEXT_PUBLIC_BOTCHAIN_EXPLORER_URL=https://scan.botchain.ai
 
-NEXT_PUBLIC_BOTRENT_CONTRACT_ADDRESS=0x71fa5827144aAd0Af7B3C85873c4BF7741fCc10A
-NEXT_PUBLIC_MOCK_NFT_CONTRACT_ADDRESS=0xCCcbB597A4dD701E77F9427cf2a0907EDD35A640
+NEXT_PUBLIC_BOTRENT_CONTRACT_ADDRESS=0xd2a552F197B77607Bc4419C02E509db617a3F0a1
 
 # Deployer key for contract deployments (never commit secrets)
 BOTCHAIN_PRIVATE_KEY=
@@ -157,8 +155,8 @@ npm run compile
 # Run test suite
 npm run test:contracts
 
-# Deploy to Botchain Testnet
-npm run deploy:botchain
+# Deploy to BOT Chain Mainnet
+npm run deploy:mainnet
 
 # Build production bundle
 npm run build
@@ -187,7 +185,7 @@ Result: **15 passing tests** with full gas reporting.
 ---
 
 ## 8. BotNS-Ready Architecture
-BotRent includes the `resolveIdentity(address)` abstraction (`src/utils/botns.ts`). Currently, addresses are securely formatted (`0x1234...5678`), with plug-and-play readiness to resolve `.bot` domain names once the BotNS registry expands to Botchain Testnet.
+BotRent includes the `resolveIdentity(address)` abstraction (`src/utils/botns.ts`). Currently, addresses are securely formatted (`0x1234...5678`), with plug-and-play readiness to resolve `.bot` domain names once the BotNS registry expands to BOT Chain Mainnet.
 
 ---
 

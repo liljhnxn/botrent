@@ -14,7 +14,8 @@ import {
   X, 
   ExternalLink 
 } from "lucide-react";
-import { botchainTestnet } from "@/config/chains";
+import { botchain } from "@/config/chains";
+import { BOTRENT_CONTRACT_ADDRESS } from "@/config/contracts";
 
 export function Navbar() {
   const pathname = usePathname();
@@ -43,8 +44,8 @@ export function Navbar() {
                 <span className="font-extrabold text-xl tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-white via-slate-100 to-slate-400">
                   Bot<span className="text-brand-cyan">Rent</span>
                 </span>
-                <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-brand-cyan/15 text-brand-cyan border border-brand-cyan/30">
-                  Testnet
+                <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-emerald-500/15 text-emerald-400 border border-emerald-500/30">
+                  Mainnet
                 </span>
               </div>
               <p className="text-[10px] text-slate-400 font-medium hidden sm:block">
@@ -78,10 +79,17 @@ export function Navbar() {
 
         {/* Right Action Area */}
         <div className="flex items-center gap-3">
-          <div className="hidden lg:flex items-center gap-2 px-3 py-1.5 rounded-xl bg-white/5 border border-white/5 text-xs text-slate-400">
-            <span className="w-2 h-2 rounded-full bg-brand-cyan animate-pulse" />
-            <span>Botchain 968</span>
-          </div>
+          <a
+            href={`${botchain.blockExplorers.default.url}/address/${BOTRENT_CONTRACT_ADDRESS}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 hover:border-brand-cyan/40 text-xs text-slate-300 hover:text-white transition-all group shadow-sm"
+            title="View Verified Protocol Contract on BOT Scan"
+          >
+            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shadow-[0_0_8px_#34d399]" />
+            <span className="font-semibold text-slate-200 group-hover:text-brand-cyan transition-colors">BOT Scan</span>
+            <ExternalLink className="w-3.5 h-3.5 text-slate-400 group-hover:text-brand-cyan group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+          </a>
 
           <WalletButton />
 
@@ -119,14 +127,17 @@ export function Navbar() {
             );
           })}
           <div className="pt-3 border-t border-white/10 flex items-center justify-between text-xs text-slate-400 px-2">
-            <span>Network: Bohr Testnet (968)</span>
+            <span className="flex items-center gap-1.5">
+              <span className="w-2 h-2 rounded-full bg-emerald-400" />
+              BOT Chain (677)
+            </span>
             <a
-              href={botchainTestnet.blockExplorers.default.url}
+              href={`${botchain.blockExplorers.default.url}/address/${BOTRENT_CONTRACT_ADDRESS}`}
               target="_blank"
               rel="noreferrer"
-              className="flex items-center gap-1 text-brand-cyan hover:underline"
+              className="flex items-center gap-1 text-brand-cyan hover:underline font-semibold"
             >
-              Explorer <ExternalLink className="w-3 h-3" />
+              BOT Scan Explorer <ExternalLink className="w-3.5 h-3.5" />
             </a>
           </div>
         </div>
