@@ -49,14 +49,15 @@ BotRent allows ERC-721 NFT owners to deposit tokens into protocol escrow and off
 
 ## 3. BOT Chain Mainnet Deployment
 
-| Component | Address / Details | Explorer Link |
+| Component | Address / Details | Official Link |
 | :--- | :--- | :--- |
+| **BOT Chain Website** | Official Portal | [https://botchain.ai](https://botchain.ai) |
+| **BOT Chain Explorer** | BOT Scan Mainnet | [https://scan.botchain.ai](https://scan.botchain.ai) |
 | **BotRent Protocol** | `0xd2a552F197B77607Bc4419C02E509db617a3F0a1` | [BOT Scan Contract](https://scan.botchain.ai/address/0xd2a552F197B77607Bc4419C02E509db617a3F0a1) |
 | **Network Name** | BOT Chain Mainnet | - |
 | **Chain ID** | `677` | - |
 | **Native Currency** | `BOT` (18 Decimals) | - |
 | **RPC Endpoint** | `https://rpc.botchain.ai` | - |
-| **Block Explorer** | `https://scan.botchain.ai` | - |
 
 ---
 

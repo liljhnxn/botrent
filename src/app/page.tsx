@@ -2,6 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { useReadContract } from "wagmi";
 import { BOTRENT_CONTRACT_ADDRESS, BOTRENT_ABI, MOCK_NFT_CONTRACT_ADDRESS } from "@/config/contracts";
 import { botchain } from "@/config/chains";
@@ -102,14 +103,20 @@ export default function HomePage() {
           </Link>
 
           <a
-            href={`${botchain.blockExplorers.default.url}/address/${BOTRENT_CONTRACT_ADDRESS}`}
+            href="https://scan.botchain.ai"
             target="_blank"
             rel="noopener noreferrer"
-            className="w-full sm:w-auto px-6 py-4 rounded-xl font-bold text-sm bg-white/5 hover:bg-white/10 border border-white/10 hover:border-brand-cyan/40 text-slate-300 hover:text-white transition-all flex items-center justify-center gap-2 group"
+            className="w-full sm:w-auto px-6 py-4 rounded-xl font-bold text-sm bg-white/5 hover:bg-white/10 border border-white/10 hover:border-emerald-500/40 text-slate-300 hover:text-white transition-all flex items-center justify-center gap-2.5 group"
           >
-            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+            <Image
+              src="/botchain-logo.png"
+              alt="BOT Chain Logo"
+              width={20}
+              height={20}
+              className="w-5 h-5 rounded object-contain"
+            />
             <span>BOT Scan Explorer</span>
-            <ExternalLink className="w-4 h-4 text-slate-400 group-hover:text-brand-cyan group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+            <ExternalLink className="w-4 h-4 text-slate-400 group-hover:text-emerald-400 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
           </a>
         </div>
 
@@ -278,52 +285,149 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Network Details Section */}
-      <section className="rounded-3xl bg-surface-100/80 border border-white/10 p-8 sm:p-12 relative overflow-hidden">
-        <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-8">
-          <div className="space-y-4 max-w-xl">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-emerald-500/15 text-emerald-400 text-xs font-semibold">
-              <Cpu className="w-4 h-4" />
-              Powered by BOT Chain Mainnet
+      {/* BOT Chain Ecosystem Section */}
+      <section id="ecosystem" className="rounded-3xl bg-surface-100/80 border border-white/10 p-8 sm:p-12 relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none -mr-20 -mt-20" />
+        <div className="relative z-10 space-y-8">
+          <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 pb-6 border-b border-white/10">
+            <div className="space-y-2">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-emerald-500/15 border border-emerald-500/30 text-emerald-400 text-xs font-semibold">
+                <Image
+                  src="/botchain-logo.png"
+                  alt="BOT Chain Logo"
+                  width={16}
+                  height={16}
+                  className="w-4 h-4 rounded object-contain"
+                />
+                <span>Official Ecosystem Protocol</span>
+              </div>
+              <h2 className="text-2xl sm:text-4xl font-extrabold text-white flex items-center gap-3">
+                BOT Chain Ecosystem
+              </h2>
+              <p className="text-xs sm:text-sm text-slate-300 max-w-2xl leading-relaxed">
+                BotRent is natively powered by BOT Chain infrastructure. Explore the official chain website and block explorer below.
+              </p>
             </div>
-            <h3 className="text-2xl sm:text-3xl font-extrabold text-white">
-              Built on High-Performance Botchain Infrastructure
-            </h3>
-            <p className="text-xs text-slate-300 leading-relaxed">
-              Botchain provides EVM compatibility with near-instant finality and minimal gas fees, making micro-rentals and frequent rental extensions commercially viable.
-            </p>
-            <div className="flex flex-wrap gap-4 pt-2">
-              <a
-                href={`${botchain.blockExplorers.default.url}/address/${BOTRENT_CONTRACT_ADDRESS}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-4 py-2 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-xs font-medium text-white flex items-center gap-2 transition-colors"
-              >
-                Verify Contract on Explorer <ExternalLink className="w-3.5 h-3.5" />
-              </a>
+
+            {/* Quick Network Spec Capsule */}
+            <div className="flex items-center gap-3 p-3 rounded-2xl bg-black/40 border border-white/10 shrink-0">
+              <Image
+                src="/botchain-logo.png"
+                alt="BOT Chain Logo"
+                width={40}
+                height={40}
+                className="w-10 h-10 rounded-xl object-contain border border-emerald-500/40 shadow-[0_0_15px_rgba(16,185,129,0.3)] bg-black p-1"
+              />
+              <div className="text-xs font-mono">
+                <div className="text-white font-bold flex items-center gap-2">
+                  BOT Chain Mainnet
+                  <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                </div>
+                <div className="text-slate-400">Chain ID: <span className="text-brand-cyan font-bold">677</span> | BOT</div>
+              </div>
             </div>
           </div>
 
-          <div className="w-full md:w-80 rounded-2xl bg-surface-200/90 border border-white/10 p-5 space-y-3 font-mono text-xs">
-            <div className="flex items-center justify-between pb-2 border-b border-white/5">
-              <span className="text-slate-400">Network:</span>
-              <span className="text-white font-bold">BOT Chain Mainnet</span>
-            </div>
-            <div className="flex items-center justify-between pb-2 border-b border-white/5">
-              <span className="text-slate-400">Chain ID:</span>
-              <span className="text-brand-cyan font-bold">677</span>
-            </div>
-            <div className="flex items-center justify-between pb-2 border-b border-white/5">
-              <span className="text-slate-400">Currency:</span>
-              <span className="text-white font-bold">BOT</span>
-            </div>
-            <div className="flex items-center justify-between">
-              <span className="text-slate-400">RPC Status:</span>
-              <span className="text-brand-emerald font-bold flex items-center gap-1">
-                <span className="w-2 h-2 rounded-full bg-brand-emerald animate-ping" />
-                Active
+          {/* Links Grid with Logo in front of each link */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {/* BOT Chain Website Card */}
+            <a
+              href="https://botchain.ai"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-6 rounded-2xl bg-surface-200/90 hover:bg-surface-200 border border-white/10 hover:border-emerald-500/50 transition-all group flex items-start gap-4 shadow-lg hover:shadow-[0_0_25px_rgba(16,185,129,0.15)]"
+            >
+              <div className="w-12 h-12 rounded-xl bg-black border border-emerald-500/40 flex items-center justify-center p-2 shrink-0 group-hover:scale-105 transition-transform shadow-[0_0_12px_rgba(16,185,129,0.25)]">
+                <Image
+                  src="/botchain-logo.png"
+                  alt="BOT Chain Logo"
+                  width={32}
+                  height={32}
+                  className="w-7 h-7 object-contain"
+                />
+              </div>
+              <div className="flex-1 min-w-0 space-y-1">
+                <div className="flex items-center justify-between">
+                  <h3 className="text-base font-bold text-white group-hover:text-emerald-400 transition-colors flex items-center gap-1.5">
+                    BOT Chain Website
+                    <ExternalLink className="w-4 h-4 text-slate-400 group-hover:text-emerald-400 transition-colors" />
+                  </h3>
+                  <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+                    Official
+                  </span>
+                </div>
+                <p className="text-xs text-slate-300">
+                  Access the official BOT Chain portal, documentation, and ecosystem directory.
+                </p>
+                <p className="text-xs font-mono text-emerald-400/90 group-hover:underline pt-1">
+                  https://botchain.ai
+                </p>
+              </div>
+            </a>
+
+            {/* BOT Chain Explorer Card */}
+            <a
+              href="https://scan.botchain.ai"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-6 rounded-2xl bg-surface-200/90 hover:bg-surface-200 border border-white/10 hover:border-emerald-500/50 transition-all group flex items-start gap-4 shadow-lg hover:shadow-[0_0_25px_rgba(16,185,129,0.15)]"
+            >
+              <div className="w-12 h-12 rounded-xl bg-black border border-emerald-500/40 flex items-center justify-center p-2 shrink-0 group-hover:scale-105 transition-transform shadow-[0_0_12px_rgba(16,185,129,0.25)]">
+                <Image
+                  src="/botchain-logo.png"
+                  alt="BOT Chain Logo"
+                  width={32}
+                  height={32}
+                  className="w-7 h-7 object-contain"
+                />
+              </div>
+              <div className="flex-1 min-w-0 space-y-1">
+                <div className="flex items-center justify-between">
+                  <h3 className="text-base font-bold text-white group-hover:text-emerald-400 transition-colors flex items-center gap-1.5">
+                    BOT Chain Explorer
+                    <ExternalLink className="w-4 h-4 text-slate-400 group-hover:text-emerald-400 transition-colors" />
+                  </h3>
+                  <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+                    BOT Scan
+                  </span>
+                </div>
+                <p className="text-xs text-slate-300">
+                  Verify real-time transactions, contracts, blocks, and on-chain NFT rental state.
+                </p>
+                <p className="text-xs font-mono text-emerald-400/90 group-hover:underline pt-1">
+                  https://scan.botchain.ai
+                </p>
+              </div>
+            </a>
+          </div>
+
+          {/* Verified Contract Footer Bar inside Ecosystem Section */}
+          <div className="p-4 rounded-2xl bg-black/50 border border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs">
+            <div className="flex items-center gap-3">
+              <div className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
+              <span className="text-slate-300">
+                Verified Protocol Contract on BOT Scan:
+              </span>
+              <span className="font-mono text-brand-cyan truncate max-w-xs sm:max-w-md">
+                {BOTRENT_CONTRACT_ADDRESS}
               </span>
             </div>
+            <a
+              href={`https://scan.botchain.ai/address/${BOTRENT_CONTRACT_ADDRESS}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-4 py-2 rounded-xl bg-emerald-500/15 hover:bg-emerald-500/25 border border-emerald-500/30 text-emerald-400 font-semibold flex items-center gap-2 transition-colors shrink-0"
+            >
+              <Image
+                src="/botchain-logo.png"
+                alt="BOT Chain"
+                width={14}
+                height={14}
+                className="w-3.5 h-3.5 object-contain"
+              />
+              <span>Inspect on BOT Scan</span>
+              <ExternalLink className="w-3.5 h-3.5" />
+            </a>
           </div>
         </div>
       </section>

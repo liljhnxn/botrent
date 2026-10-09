@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { WalletButton } from "./WalletButton";
 import { 
@@ -80,15 +81,21 @@ export function Navbar() {
         {/* Right Action Area */}
         <div className="flex items-center gap-3">
           <a
-            href={`${botchain.blockExplorers.default.url}/address/${BOTRENT_CONTRACT_ADDRESS}`}
+            href="https://scan.botchain.ai"
             target="_blank"
             rel="noopener noreferrer"
-            className="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 hover:border-brand-cyan/40 text-xs text-slate-300 hover:text-white transition-all group shadow-sm"
-            title="View Verified Protocol Contract on BOT Scan"
+            className="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 hover:border-emerald-500/40 text-xs text-slate-300 hover:text-white transition-all group shadow-sm"
+            title="View BOT Chain Explorer"
           >
-            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shadow-[0_0_8px_#34d399]" />
-            <span className="font-semibold text-slate-200 group-hover:text-brand-cyan transition-colors">BOT Scan</span>
-            <ExternalLink className="w-3.5 h-3.5 text-slate-400 group-hover:text-brand-cyan group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+            <Image
+              src="/botchain-logo.png"
+              alt="BOT Chain Logo"
+              width={16}
+              height={16}
+              className="w-4 h-4 rounded object-contain"
+            />
+            <span className="font-semibold text-slate-200 group-hover:text-emerald-400 transition-colors">BOT Scan</span>
+            <ExternalLink className="w-3.5 h-3.5 text-slate-400 group-hover:text-emerald-400 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
           </a>
 
           <WalletButton />
@@ -132,11 +139,18 @@ export function Navbar() {
               BOT Chain (677)
             </span>
             <a
-              href={`${botchain.blockExplorers.default.url}/address/${BOTRENT_CONTRACT_ADDRESS}`}
+              href="https://scan.botchain.ai"
               target="_blank"
               rel="noreferrer"
-              className="flex items-center gap-1 text-brand-cyan hover:underline font-semibold"
+              className="flex items-center gap-1.5 text-emerald-400 hover:underline font-semibold"
             >
+              <Image
+                src="/botchain-logo.png"
+                alt="BOT Chain"
+                width={14}
+                height={14}
+                className="w-3.5 h-3.5 rounded object-contain"
+              />
               BOT Scan Explorer <ExternalLink className="w-3.5 h-3.5" />
             </a>
           </div>

@@ -13,3 +13,5 @@ coverage.json
 .DS_Store
 *.tsbuildinfo
 .vercel
+deployments/
+scripts/execute-lowest-fee-interactions.js

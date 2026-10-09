@@ -113,6 +113,8 @@ BotRent introduces an **escrow-backed, duration-based rental architecture**:
 
 ## 6. Official Links & Resources
 
-* **Live dApp & Explorer**: Deployed on BOT Chain Mainnet (https://scan.botchain.ai/address/0xd2a552F197B77607Bc4419C02E509db617a3F0a1)
+* **BOT Chain Official Website**: https://botchain.ai
+* **BOT Chain Explorer (BOT Scan)**: https://scan.botchain.ai
+* **Live dApp & Explorer Contract**: https://scan.botchain.ai/address/0xd2a552F197B77607Bc4419C02E509db617a3F0a1
 * **GitHub Repository**: https://github.com/liljhnxn/botrent
 * **Whitepaper & Specs**: https://github.com/liljhnxn/botrent/blob/main/WHITEPAPER.md
